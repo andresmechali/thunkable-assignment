@@ -1,5 +1,6 @@
 import React from "react";
-import { ConfigProvider, Button } from "antd";
+import { ConfigProvider } from "antd";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
@@ -7,10 +8,12 @@ function App() {
       theme={{
         token: {
           // TODO: colors here
+          colorPrimaryHover: "", // remove default color for button hover
+          colorPrimaryActive: "", // remove default color for button active
         },
       }}
     >
-      <Button>Some button</Button>
+      <Navbar />
     </ConfigProvider>
   );
 }
