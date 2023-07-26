@@ -8,8 +8,6 @@ function App() {
       theme={{
         token: {
           // TODO: colors here
-          colorPrimaryHover: "", // remove default color for button hover
-          colorPrimaryActive: "", // remove default color for button active
         },
       }}
     >

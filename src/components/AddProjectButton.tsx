@@ -10,14 +10,10 @@ const AddProjectButton: React.FC = () => {
     <Button
       type="primary"
       shape="circle"
-      style={{
-        width: "60px",
-        height: "60px",
-      }}
       onClick={handleClick}
-      icon={<PlusSign width={60} />}
+      icon={<PlusSign />}
       size="large"
-      className="flex justify-center items-center bg-add-button active:focus:hover:bg-add-button-hover drop-shadow-add-button translate-y-[50%] translate-x-[-130px]"
+      className="flex justify-center items-center bg-add-button active:focus:hover:bg-add-button-hover hover:bg-add-button-hover drop-shadow-add-button translate-y-[50%] translate-x-[-130px] w-[60px] h-[60px]"
     />
   );
 };
