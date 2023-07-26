@@ -23,10 +23,10 @@ npm start
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Tests (WIP)
+## Tests
 
-Due to a lack of time, there are not additional tests added. However, the default `<App />` test works, as I
-configured the testing renderer to be connected to the store. To run this tests, run:
+Due to a lack of time, there are no additional tests added. However, I
+configured the testing renderer to be connected to the store, so that the `<App />` test provided by CRA does not fail. To run this test, run:
 ```bash
 npm test
 ```

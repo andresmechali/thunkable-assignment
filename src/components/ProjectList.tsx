@@ -6,20 +6,9 @@ import {
   Draggable,
 } from "@hello-pangea/dnd";
 import Project from "./Project";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { reorderProjects } from "../../redux/reducers/projectsReducer";
-
-const reorder = (
-  list: ProjectType[],
-  startIndex: number,
-  endIndex: number,
-): ProjectType[] => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  return result;
-};
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { reorderProjects } from "../redux/reducers/projectsReducer";
+import { reorder } from "../utils";
 
 const ProjectList: FC = () => {
   const projects = useAppSelector((state) => state.projects.list);

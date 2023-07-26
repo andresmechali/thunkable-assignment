@@ -1,7 +1,7 @@
 import { FC } from "react";
-import ProjectList from "./project/ProjectList";
+import ProjectList from "./ProjectList";
 import { useAppSelector } from "../redux/hooks";
-import NewProject from "./project/NewProject";
+import NewProject from "./NewProject";
 
 const Main: FC = () => {
   const ui = useAppSelector((state) => state.ui);

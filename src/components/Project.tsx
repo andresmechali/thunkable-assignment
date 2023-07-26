@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState, FC } from "react";
 import { Form, Input, InputRef, Modal, Tooltip } from "antd";
-import { formatDate } from "../../utils";
-import { useAppDispatch } from "../../redux/hooks";
+import { formatDate } from "../utils";
+import { useAppDispatch } from "../redux/hooks";
 import { QuestionCircleFilled } from "@ant-design/icons";
-import Card from "../Card";
+import Card from "./Card";
 import {
   renameProject,
   deleteProject,
-} from "../../redux/reducers/projectsReducer";
+} from "../redux/reducers/projectsReducer";
 
 type Props = {
   project: ProjectType;
