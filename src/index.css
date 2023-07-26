@@ -12,3 +12,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Icons */
+.edit-icon {
+  background-image: url("assets/EditIcon.svg");
+}
+
+.edit-icon:hover {
+  background-image: url("assets/EditIconHover.svg");
+}
+
+.delete-icon {
+  background-image: url("assets/DeleteIcon.svg");
+}
+
+.delete-icon:hover {
+  background-image: url("assets/DeleteIconHover.svg");
+}
+
+button {
+  background-repeat: no-repeat;
+}

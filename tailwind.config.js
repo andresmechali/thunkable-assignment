@@ -9,6 +9,7 @@ module.exports = {
         "gray-light": theme.lightGray,
         gray: theme.gray,
         "gray-dark": theme.darkGray,
+        "gray-line": theme.grayLine,
         "add-button": theme.addButton,
         "add-button-hover": theme.addButtonHover,
       },
@@ -17,6 +18,9 @@ module.exports = {
       },
       boxShadow: {
         navbar: "0px -1px 4px 0px rgba(0, 0, 0, 0.20)",
+      },
+      screens: {
+        md: "800px",
       },
     },
   },
