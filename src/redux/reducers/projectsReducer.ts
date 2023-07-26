@@ -1,40 +1,47 @@
-import { AnyAction } from "redux";
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: ProjectType[] = [];
-
-const projectsReducer = (state = initialState, action: AnyAction) => {
-  switch (action.type) {
-    case "create": {
-      const randomId = Math.random().toString(10); // Not the best random generator but good enough for simplicity
-      return [
-        {
-          id: randomId,
-          name: action.name,
-          created: new Date().getTime(),
-        },
-        ...state,
-      ];
-    }
-    case "rename": {
-      return state.map((project) => {
-        if (project.id === action.id) {
-          return {
-            ...project,
-            name: action.name,
-          };
-        }
-        return project;
-      });
-    }
-    case "delete": {
-      return state.filter((project) => project.id !== action.id);
-    }
-    case "reorder": {
-      return [...action.reordered];
-    }
-    default:
-      return state;
-  }
+const initialState: { list: ProjectType[] } = {
+  list: [],
 };
 
-export default projectsReducer;
+const projectsSlice = createSlice({
+  name: "projects",
+  initialState,
+  reducers: {
+    createProject(state, action) {
+      const { name } = action.payload;
+      state.list.unshift({
+        id: Math.random().toString(10), // Not the best random generator but good enough for simplicity
+        name,
+        created: new Date().getTime(),
+      });
+    },
+    renameProject(state, action) {
+      const { id, name } = action.payload;
+      const index = state.list.findIndex((project) => project.id === id);
+      if (index >= 0) {
+        const current = state.list[index];
+        state.list[index] = {
+          ...current,
+          name,
+        };
+      }
+    },
+    deleteProject(state, action) {
+      const { id } = action.payload;
+      const index = state.list.findIndex((project) => project.id === id);
+      if (index >= 0) {
+        state.list.splice(index, 1);
+      }
+    },
+    reorderProjects(state, action) {
+      const { reordered } = action.payload;
+      state.list = reordered;
+    },
+  },
+});
+
+export const { createProject, renameProject, deleteProject, reorderProjects } =
+  projectsSlice.actions;
+
+export default projectsSlice.reducer;

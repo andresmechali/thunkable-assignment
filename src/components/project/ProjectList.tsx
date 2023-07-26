@@ -1,3 +1,4 @@
+import { FC } from "react";
 import {
   DragDropContext,
   Droppable,
@@ -6,7 +7,7 @@ import {
 } from "@hello-pangea/dnd";
 import Project from "./Project";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { reorderProjects } from "../../redux/actions";
+import { reorderProjects } from "../../redux/reducers/projectsReducer";
 
 const reorder = (
   list: ProjectType[],
@@ -20,8 +21,8 @@ const reorder = (
   return result;
 };
 
-const ProjectList: React.FC = () => {
-  const projects = useAppSelector((state) => state.projects);
+const ProjectList: FC = () => {
+  const projects = useAppSelector((state) => state.projects.list);
   const dispatch = useAppDispatch();
 
   const onDragEnd = (result: DropResult) => {
@@ -34,7 +35,7 @@ const ProjectList: React.FC = () => {
       result.destination.index,
     );
 
-    dispatch(reorderProjects({ reorderedProjects: reordered }));
+    dispatch(reorderProjects({ reordered }));
   };
 
   return (

@@ -1,24 +1,20 @@
-import { AnyAction } from "redux";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: { creating: boolean } = { creating: false };
 
-const uiReducer = (state = initialState, action: AnyAction) => {
-  switch (action.type) {
-    case "showCreate": {
-      return {
-        ...state,
-        creating: true,
-      };
-    }
-    case "hideCreate": {
-      return {
-        ...state,
-        creating: false,
-      };
-    }
-    default:
-      return state;
-  }
-};
+const uiSlice = createSlice({
+  name: "ui",
+  initialState,
+  reducers: {
+    showCreate(state) {
+      state.creating = true;
+    },
+    hideCreate(state) {
+      state.creating = false;
+    },
+  },
+});
 
-export default uiReducer;
+export const { showCreate, hideCreate } = uiSlice.actions;
+
+export default uiSlice.reducer;

@@ -1,14 +1,22 @@
-import { configureStore } from "@reduxjs/toolkit";
+import {
+  combineReducers,
+  configureStore,
+  PreloadedState,
+} from "@reduxjs/toolkit";
 import projectsReducer from "./reducers/projectsReducer";
 import uiReducer from "./reducers/uiReducer";
 
-export const store = configureStore({
-  reducer: {
-    projects: projectsReducer,
-    ui: uiReducer,
-  },
+const rootReducer = combineReducers({
+  projects: projectsReducer,
+  ui: uiReducer,
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
-export type AppStore = typeof store;
+export const setupStore = (preloadedState?: PreloadedState<RootState>) =>
+  configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  });
+
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore["dispatch"];

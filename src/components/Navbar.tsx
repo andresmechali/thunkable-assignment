@@ -1,7 +1,8 @@
+import { FC } from "react";
 import AddProjectButton from "./AddProjectButton";
 import logo from "../assets/ThunkableBeaver.png";
 
-const Navbar: React.FC = () => {
+const Navbar: FC = () => {
   return (
     <div className="flex flex-row justify-center w-full shadow-navbar bg-gray-light border-0 border-b-gray">
       <nav className="flex flex-row w-full max-w-[800px] flex-shrink-0 justify-center items-end h-[124px] px-4 md:p-0">

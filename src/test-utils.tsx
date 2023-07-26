@@ -9,6 +9,7 @@ import type { AppStore, RootState } from "./redux/store";
 // As a basic setup, import your same slice reducers
 import projectsReducer from "./redux/reducers/projectsReducer";
 import uiReducer from "./redux/reducers/uiReducer";
+import { setupStore } from "./redux/store";
 
 // This type interface extends the default options for render from RTL, as well
 // as allows the user to specify other things such as initialState, store.
@@ -20,12 +21,14 @@ interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
 export function renderWithProviders(
   ui: React.ReactElement,
   {
-    preloadedState = { projects: [], ui: { creating: false } },
+    preloadedState = {
+      projects: {
+        list: [{ id: "123", name: "asd", created: 1690403351551 }],
+      },
+      ui: { creating: false },
+    },
     // Automatically create a store instance if no store was passed in
-    store = configureStore({
-      reducer: { projects: projectsReducer, ui: uiReducer },
-      preloadedState,
-    }),
+    store = setupStore(preloadedState),
     ...renderOptions
   }: ExtendedRenderOptions = {},
 ) {

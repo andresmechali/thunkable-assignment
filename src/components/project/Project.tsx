@@ -4,7 +4,10 @@ import { formatDate } from "../../utils";
 import { useAppDispatch } from "../../redux/hooks";
 import { QuestionCircleFilled } from "@ant-design/icons";
 import Card from "../Card";
-import { deleteProject, renameProject } from "../../redux/actions";
+import {
+  renameProject,
+  deleteProject,
+} from "../../redux/reducers/projectsReducer";
 
 type Props = {
   project: ProjectType;
@@ -24,7 +27,7 @@ const Project: FC<Props> = ({ project }) => {
 
   const onRename = ({ projectName }: { projectName: string }) => {
     if (project && projectName) {
-      dispatch(renameProject({ id: project.id, newName: projectName }));
+      dispatch(renameProject({ id: project.id, name: projectName }));
       setIsNaming(false);
     }
   };
