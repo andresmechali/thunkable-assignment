@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+# Thunkable assignment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an assignment for an interview process at Thunkable.
 
-## Available Scripts
+## How to run
 
-In the project directory, you can run:
+Clone the repository:
+```bash
+git clone https://github.com/andresmechali/thunkable-assignment
+```
 
+Access the project directory and install dependencies:
+```bash
+cd thunkable-assignment
+npm install
+```
+
+Run app in development mode:
+```bash
+npm start
+```
 ### `npm start`
 
-Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tests (WIP)
 
-### `npm test`
+Due to a lack of time, there are not additional tests added. However, the default `<App />` test works, as I
+configured the testing renderer to be connected to the store. To run this tests, run:
+```bash
+npm test
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Decisions and data flow
+### Redux
+As state management, I used [Redux](https://react-redux.js.org/). This is an overkill for such a small application, but 
+it serves the purpose and makes the data flow cleaner.
 
-### `npm run build`
+### Ant Design
+As a component library, I used [Ant Design](https://ant.design/components/overview/) because it aligns with the provided design, and it's simple to add and use. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Responsiveness
+I made the application responsive and mobile friendly. This was done mostly using [TailwindCSS](https://tailwindcss.com/), with a mobile-first approach.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Drag and drop
+For the drag and drop feature, I used [@hello-pangea/dnd](https://github.com/hello-pangea/dnd), which is a fork of [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd),
+with the advantage of being actively maintained and having solved some issues with React 18.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Others
+I had to make some assumptions and some UX/UI decisions, not included on the design, as follows:
+- When adding a new project, the name input is focused.
+- When editing an existing project, the name input is focused.
+- When editing, the input starts with the current name.
+- When clicking outside the project while creating/editing, the changes are lost.
+- The application layout changes at a width of 800px.
+- The white background on some designs, as well as the border shadow of the navbar should not be there,
+as they are not found in the other pages.
+- Long names on projects are filled with an ellipsis (...). In this case, full names
+can be visualized by hovering.
