@@ -1,4 +1,3 @@
-// TODO: allow drag and drop
 import {
   DragDropContext,
   Droppable,
@@ -7,6 +6,7 @@ import {
 } from "@hello-pangea/dnd";
 import Project from "./Project";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { reorderProjects } from "../../redux/actions";
 
 const reorder = (
   list: ProjectType[],
@@ -34,10 +34,7 @@ const ProjectList: React.FC = () => {
       result.destination.index,
     );
 
-    dispatch({
-      type: "reorder",
-      reordered,
-    });
+    dispatch(reorderProjects({ reorderedProjects: reordered }));
   };
 
   return (
@@ -47,7 +44,7 @@ const ProjectList: React.FC = () => {
           <div
             ref={provided.innerRef}
             {...provided.droppableProps}
-            className="w-full md:w-[800px]"
+            className="w-full md:w-[800px] h-screen"
           >
             {projects.map((project, index) => (
               <Draggable

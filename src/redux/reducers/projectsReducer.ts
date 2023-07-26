@@ -31,7 +31,7 @@ const projectsReducer = (state = initialState, action: AnyAction) => {
         ...state,
       ];
     }
-    case "edit": {
+    case "rename": {
       return state.map((project) => {
         if (project.id === action.id) {
           return {

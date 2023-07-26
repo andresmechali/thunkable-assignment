@@ -1,14 +1,13 @@
 import { Button } from "antd";
 import { ReactComponent as PlusSign } from "../assets/PlusSign.svg";
 import { useAppDispatch } from "../redux/hooks";
+import { showCreate } from "../redux/actions";
 
 const AddProjectButton: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    dispatch({
-      type: "showCreate",
-    });
+    dispatch(showCreate());
   };
 
   return (

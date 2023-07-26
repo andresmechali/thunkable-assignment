@@ -1,4 +1,3 @@
-// TODO: fix box-shadow
 import AddProjectButton from "./AddProjectButton";
 import logo from "../assets/ThunkableBeaver.png";
 
