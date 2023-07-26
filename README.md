@@ -34,7 +34,7 @@ npm test
 ## Decisions and data flow
 ### Redux
 As state management, I used [Redux](https://react-redux.js.org/). This is an overkill for such a small application, but 
-it serves the purpose and makes the data flow cleaner.
+it serves the purpose and makes the data flow clean.
 
 ### Ant Design
 As a component library, I used [Ant Design](https://ant.design/components/overview/) because it aligns with the provided design, and it's simple to add and use. 

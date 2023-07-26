@@ -16,7 +16,6 @@ const NewProject: FC = () => {
   }, []);
 
   const onCreate = ({ projectName }: { projectName: string }) => {
-    console.log("asddsadsa");
     if (projectName) {
       dispatch(createProject({ name: projectName }));
       dispatch(hideCreate());
