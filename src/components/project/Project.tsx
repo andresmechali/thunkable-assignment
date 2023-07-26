@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, FC } from "react";
-import { Form, Input, InputRef, Modal } from "antd";
+import { Form, Input, InputRef, Modal, Tooltip } from "antd";
 import { formatDate } from "../../utils";
 import { useAppDispatch } from "../../redux/hooks";
 import { QuestionCircleFilled } from "@ant-design/icons";
@@ -46,8 +46,10 @@ const Project: FC<Props> = ({ project }) => {
         {/* Project info */}
         {!isNaming ? (
           <section className="flex flex-col">
-            <div className="md:w-[200px] md:justify-between font-semibold text-[20px] flex flex-row gap-4 items-center">
-              <p>{project.name}</p>
+            <div className="md:w-[240px] md:justify-between font-semibold text-[20px] flex flex-row gap-4 items-center">
+              <Tooltip title={project.name} placement="right">
+                <p className="max-w-[200px] truncate">{project.name}</p>
+              </Tooltip>
               <button
                 className="hidden md:inline-flex edit-icon w-6 h-6"
                 onClick={() => {
@@ -66,6 +68,7 @@ const Project: FC<Props> = ({ project }) => {
             onFinish={onRename}
             autoComplete="off"
             initialValues={{ projectName: project.name }}
+            className="w-[200px] md:w-[240px]"
           >
             <Form.Item name="projectName" className="mb-0">
               <Input
