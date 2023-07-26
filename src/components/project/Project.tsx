@@ -4,6 +4,7 @@ import { Form, Input, InputRef, Modal } from "antd";
 import { formatDate } from "../../utils";
 import { useAppDispatch } from "../../redux/hooks";
 import { QuestionCircleFilled } from "@ant-design/icons";
+import { Draggable } from "@hello-pangea/dnd";
 
 type Props = {
   project?: ProjectType;

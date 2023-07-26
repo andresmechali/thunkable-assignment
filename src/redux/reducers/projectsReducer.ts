@@ -21,7 +21,6 @@ const initialState: ProjectType[] = [
 const projectsReducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case "create": {
-      console.log(action);
       const randomId = Math.random().toString(10);
       return [
         {
@@ -33,7 +32,6 @@ const projectsReducer = (state = initialState, action: AnyAction) => {
       ];
     }
     case "edit": {
-      console.log(action);
       return state.map((project) => {
         if (project.id === action.id) {
           return {
@@ -46,6 +44,9 @@ const projectsReducer = (state = initialState, action: AnyAction) => {
     }
     case "delete": {
       return state.filter((project) => project.id !== action.id);
+    }
+    case "reorder": {
+      return [...action.reordered];
     }
     default:
       return state;
