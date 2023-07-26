@@ -5,13 +5,7 @@ import Main from "./components/Main";
 
 function App() {
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          // TODO: colors here
-        },
-      }}
-    >
+    <ConfigProvider>
       <div className="bg-gray-light h-screen w-full flex flex-col items-center">
         <Navbar />
         <Main />

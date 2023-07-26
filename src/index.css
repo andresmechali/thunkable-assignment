@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*TODO: review fonts*/
-
 body {
   margin: 0;
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
