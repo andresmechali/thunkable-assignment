@@ -1,7 +1,8 @@
 import logo from "../../assets/ProjectIcon.png";
 import { useEffect, useRef, useState } from "react";
-import { Form, Input } from "antd";
+import { Form, Input, InputRef } from "antd";
 import { formatDate } from "../../utils";
+import { useAppDispatch } from "../../redux/hooks";
 
 type Props = {
   project?: ProjectType;
@@ -10,6 +11,8 @@ type Props = {
 const Project: React.FC<Props> = ({ project }) => {
   const [isNaming, setIsNaming] = useState<boolean>(!project);
   const namingRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<InputRef>(null);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     // Stop renaming when clicking outside project card
@@ -29,14 +32,15 @@ const Project: React.FC<Props> = ({ project }) => {
   const onCreate = ({ projectName }: { projectName: string }) => {
     if (projectName) {
       // TODO: create project
-      console.log(projectName);
+      dispatch({ type: "create", name: projectName });
+      setIsNaming(false);
     }
   };
 
   const onRename = ({ projectName }: { projectName: string }) => {
     if (project && projectName) {
-      console.log(project.id, projectName);
-      // TODO: update name
+      dispatch({ type: "edit", name: projectName, id: project.id });
+      setIsNaming(false);
     }
   };
 
@@ -47,6 +51,7 @@ const Project: React.FC<Props> = ({ project }) => {
       <Form name={formName} onFinish={callBack} autoComplete="off">
         <Form.Item name="projectName" className="mb-0">
           <Input
+            ref={inputRef}
             placeholder="Name your project"
             className="rounded-sm text-[16px]"
           />
@@ -63,7 +68,15 @@ const Project: React.FC<Props> = ({ project }) => {
       {/* Logo */}
       <img src={logo} width={32} alt="logo" className="mr-4 md:mr-6" />
       {!project ? (
-        renderNaming("create", onCreate)
+        <Form name="create" onFinish={onCreate} autoComplete="off">
+          <Form.Item name="projectName" className="mb-0">
+            <Input
+              ref={inputRef}
+              placeholder="Name your project"
+              className="rounded-sm text-[16px]"
+            />
+          </Form.Item>
+        </Form>
       ) : (
         <div className="flex flex-row flex-1 justify-between items-center">
           {/* Project info */}
@@ -75,6 +88,7 @@ const Project: React.FC<Props> = ({ project }) => {
                   className="hidden md:inline-flex edit-icon w-6 h-6"
                   onClick={() => {
                     setIsNaming(true);
+                    inputRef.current?.focus();
                   }}
                 />
               </div>
@@ -83,7 +97,15 @@ const Project: React.FC<Props> = ({ project }) => {
               </p>
             </section>
           ) : (
-            renderNaming("rename", onRename)
+            <Form name="rename" onFinish={onRename} autoComplete="off">
+              <Form.Item name="projectName" className="mb-0">
+                <Input
+                  ref={inputRef}
+                  placeholder="Name your project"
+                  className="rounded-sm text-[16px]"
+                />
+              </Form.Item>
+            </Form>
           )}
 
           <section className="hidden md:inline text-[14px] text-gray-text">
@@ -96,6 +118,8 @@ const Project: React.FC<Props> = ({ project }) => {
               className="md:hidden edit-icon w-6 h-6"
               onClick={() => {
                 setIsNaming(true);
+                console.log(inputRef);
+                inputRef.current?.focus();
               }}
             />
             <button
