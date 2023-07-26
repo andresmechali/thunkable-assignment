@@ -1,8 +1,9 @@
 import logo from "../../assets/ProjectIcon.png";
 import { useEffect, useRef, useState } from "react";
-import { Form, Input, InputRef } from "antd";
+import { Form, Input, InputRef, Modal } from "antd";
 import { formatDate } from "../../utils";
 import { useAppDispatch } from "../../redux/hooks";
+import { QuestionCircleFilled } from "@ant-design/icons";
 
 type Props = {
   project?: ProjectType;
@@ -13,6 +14,7 @@ const Project: React.FC<Props> = ({ project }) => {
   const namingRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<InputRef>(null);
   const dispatch = useAppDispatch();
+  const [modal, contextHolder] = Modal.useModal();
 
   useEffect(() => {
     // Stop renaming when clicking outside project card
@@ -44,6 +46,12 @@ const Project: React.FC<Props> = ({ project }) => {
     }
   };
 
+  const onDelete = () => {
+    if (project) {
+      dispatch({ type: "delete", id: project.id });
+    }
+  };
+
   // TODO: remove 'any'
   function renderNaming(formName: string, callBack: any) {
     return (
@@ -65,6 +73,7 @@ const Project: React.FC<Props> = ({ project }) => {
       ref={namingRef}
       className="flex flex-row items-center w-full md:w-[800px] h-[86px] md:h-[70px] pl-4 md:pl-6 pr-4 md:pr-8 pt-4 pb-4 bg-white border-t border-t-gray-line border-b border-b-gray-line last:border-t-0"
     >
+      {contextHolder}
       {/* Logo */}
       <img src={logo} width={32} alt="logo" className="mr-4 md:mr-6" />
       {!project ? (
@@ -125,7 +134,25 @@ const Project: React.FC<Props> = ({ project }) => {
             <button
               className="delete-icon w-6 h-6"
               onClick={() => {
-                // TODO: ask for confirmation and delete project
+                modal.confirm({
+                  title: (
+                    <p className="text-gray-title" style={{ fontWeight: 400 }}>
+                      Are you sure you want to delete this project?
+                    </p>
+                  ),
+                  icon: <QuestionCircleFilled />,
+                  content: (
+                    <p className="font-semilight text-gray-text mb-8">
+                      This action can't be undone.
+                    </p>
+                  ),
+                  okText: "Yes",
+                  cancelText: "No",
+                  okButtonProps: {
+                    className: "bg-primary",
+                  },
+                  onOk: onDelete,
+                });
               }}
             />
           </section>

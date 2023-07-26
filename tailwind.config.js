@@ -11,8 +11,10 @@ module.exports = {
         "gray-dark": theme.darkGray,
         "gray-line": theme.grayLine,
         "gray-text": theme.grayText,
+        "gray-title": theme.grayTitle,
         "add-button": theme.addButton,
         "add-button-hover": theme.addButtonHover,
+        primary: theme.primary,
       },
       dropShadow: {
         "add-button": "0px 4px 4px rgba(0, 0, 0, 0.25)",

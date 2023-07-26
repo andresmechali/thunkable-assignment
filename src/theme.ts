@@ -6,6 +6,8 @@ const theme = {
   addButtonHover: "#3D3A4F",
   grayLine: "rgba(0,0,0,0.1)",
   grayText: "rgba(0,0,0,0.5)",
+  grayTitle: "rgba(0,0,0,0.85)",
+  primary: "#1890FF",
 };
 
 export default theme;
