@@ -6,6 +6,7 @@ const AddProjectButton: React.FC = () => {
     // TODO
   };
 
+  // TODO: review position - button jumps when resizing
   return (
     <Button
       type="primary"
@@ -13,7 +14,7 @@ const AddProjectButton: React.FC = () => {
       onClick={handleClick}
       icon={<PlusSign />}
       size="large"
-      className="flex justify-center items-center bg-add-button active:focus:hover:bg-add-button-hover hover:bg-add-button-hover drop-shadow-add-button translate-y-[50%] translate-x-[-130px] w-[60px] h-[60px]"
+      className="absolute right-[21px] bottom-[45px] md:top-[94px] md:right-[64px] lg:relative lg:top-[30px] flex justify-center items-center bg-add-button active:focus:hover:bg-add-button-hover hover:bg-add-button-hover drop-shadow-add-button w-[60px] h-[60px]"
     />
   );
 };
