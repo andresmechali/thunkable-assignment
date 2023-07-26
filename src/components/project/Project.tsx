@@ -35,7 +35,7 @@ const Project: React.FC<Props> = ({ project }) => {
     if (projectName) {
       // TODO: create project
       dispatch({ type: "create", name: projectName });
-      setIsNaming(false);
+      dispatch({ type: "hideCreate" });
     }
   };
 
@@ -71,7 +71,7 @@ const Project: React.FC<Props> = ({ project }) => {
   return (
     <div
       ref={namingRef}
-      className="flex flex-row items-center w-full md:w-[800px] h-[86px] md:h-[70px] pl-4 md:pl-6 pr-4 md:pr-8 pt-4 pb-4 bg-white border-t border-t-gray-line border-b border-b-gray-line last:border-t-0"
+      className="flex flex-row items-center w-full md:w-[800px] h-[86px] md:h-[70px] pl-4 md:pl-6 pr-4 md:pr-8 pt-4 pb-4 bg-white border-t-gray-line border-b border-b-gray-line first:border-t"
     >
       {contextHolder}
       {/* Logo */}
