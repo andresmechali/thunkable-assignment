@@ -10,6 +10,7 @@ module.exports = {
         gray: theme.gray,
         "gray-dark": theme.darkGray,
         "gray-line": theme.grayLine,
+        "gray-text": theme.grayText,
         "add-button": theme.addButton,
         "add-button-hover": theme.addButtonHover,
       },

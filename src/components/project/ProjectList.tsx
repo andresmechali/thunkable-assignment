@@ -2,10 +2,21 @@
 // TODO: allow drag and drop
 import Project from "./Project";
 
-const projects: Project[] = [
+const projects: ProjectType[] = [
   {
     id: "1",
-    name: "asd",
+    name: "Currency App",
+    created: new Date().getTime(),
+  },
+  {
+    id: "2",
+    name: "Hello App",
+    created: new Date().getTime(),
+  },
+  {
+    id: "3",
+    name: "Video",
+    created: new Date().getTime(),
   },
 ];
 

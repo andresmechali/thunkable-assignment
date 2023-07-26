@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 type Props = {
-  project: Project;
+  project: ProjectType;
 };
 
 const ProjectName: React.FC<Props> = ({ project }) => {
