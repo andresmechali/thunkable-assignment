@@ -1,27 +1,11 @@
 import { AnyAction } from "redux";
 
-const initialState: ProjectType[] = [
-  {
-    id: "1",
-    name: "Currency App",
-    created: new Date().getTime(),
-  },
-  {
-    id: "2",
-    name: "Hello App",
-    created: new Date().getTime(),
-  },
-  {
-    id: "3",
-    name: "Video",
-    created: new Date().getTime(),
-  },
-];
+const initialState: ProjectType[] = [];
 
 const projectsReducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case "create": {
-      const randomId = Math.random().toString(10);
+      const randomId = Math.random().toString(10); // Not the best random generator but good enough for simplicity
       return [
         {
           id: randomId,
