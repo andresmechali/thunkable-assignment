@@ -1,14 +1,11 @@
 import React, { PropsWithChildren } from "react";
 import { render } from "@testing-library/react";
 import type { RenderOptions } from "@testing-library/react";
-import { configureStore } from "@reduxjs/toolkit";
 import type { PreloadedState } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 
 import type { AppStore, RootState } from "./redux/store";
 // As a basic setup, import your same slice reducers
-import projectsReducer from "./redux/reducers/projectsReducer";
-import uiReducer from "./redux/reducers/uiReducer";
 import { setupStore } from "./redux/store";
 
 // This type interface extends the default options for render from RTL, as well

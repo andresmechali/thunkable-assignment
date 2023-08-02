@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, FC } from "react";
+import { useEffect, useRef, useState, FC, useCallback } from "react";
 import { Form, Input, InputRef, Modal, Tooltip } from "antd";
 import { formatDate } from "../utils";
 import { useAppDispatch } from "../redux/hooks";
@@ -38,12 +38,12 @@ const Project: FC<Props> = ({ project }) => {
     }
   };
 
+  const onClickOutside = useCallback(() => {
+    setIsNaming(false);
+  }, []);
+
   return (
-    <Card
-      onClickOutside={() => {
-        setIsNaming(false);
-      }}
-    >
+    <Card onClickOutside={onClickOutside}>
       <div className="flex flex-row flex-1 justify-between items-center">
         {contextHolder}
         {/* Project info */}

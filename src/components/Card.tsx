@@ -22,7 +22,7 @@ const Card: FC<{ children: ReactNode; onClickOutside?: VoidFunction }> = ({
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
-  });
+  }, [onClickOutside]);
 
   return (
     <div

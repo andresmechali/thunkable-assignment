@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from "react";
+import { FC, useCallback, useEffect, useRef } from "react";
 import Card from "./Card";
 import { Form, Input, InputRef } from "antd";
 import { useAppDispatch } from "../redux/hooks";
@@ -22,9 +22,9 @@ const NewProject: FC = () => {
     }
   };
 
-  const onClickOutside = () => {
+  const onClickOutside = useCallback(() => {
     dispatch(hideCreate());
-  };
+  }, [dispatch]);
 
   return (
     <Card onClickOutside={onClickOutside}>
